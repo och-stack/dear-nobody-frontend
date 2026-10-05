@@ -13,6 +13,7 @@ export default function Signup() {
   async function handleSubmit(e) {
     e.preventDefault()
     setError('')
+
     try {
       await signup(email, password, username)
       navigate('/login')
@@ -22,16 +23,20 @@ export default function Signup() {
   }
 
   return (
-<<<<<<< HEAD
     <div className="row justify-content-center">
       <div className="col-md-6 col-lg-5">
         <div className="card shadow-sm">
           <div className="card-body p-4">
-            <h1 className="text-center mb-4">Sign up</h1>
+            <h1 className="text-center mb-4">
+              Sign up
+            </h1>
 
             <form onSubmit={handleSubmit}>
               <div className="mb-3">
-                <label className="form-label">Username</label>
+                <label className="form-label">
+                  Username
+                </label>
+
                 <input
                   type="text"
                   className="form-control"
@@ -42,7 +47,10 @@ export default function Signup() {
               </div>
 
               <div className="mb-3">
-                <label className="form-label">Email</label>
+                <label className="form-label">
+                  Email
+                </label>
+
                 <input
                   type="email"
                   className="form-control"
@@ -54,7 +62,10 @@ export default function Signup() {
               </div>
 
               <div className="mb-3">
-                <label className="form-label">Password</label>
+                <label className="form-label">
+                  Password
+                </label>
+
                 <input
                   type="password"
                   className="form-control"
@@ -86,16 +97,5 @@ export default function Signup() {
         </div>
       </div>
     </div>
-=======
-    <form onSubmit={handleSubmit}>
-      <h1>Sign up</h1>
-      <p><input placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} /></p>
-      <p><input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required /></p>
-      <p><input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required /></p>
-      <button type="submit">Sign up</button>
-      {error && <p>{error}</p>}
-      <p>Have an account? <Link to="/login">Log in</Link></p>
-    </form>
->>>>>>> 2043396a7da4e4fa441774c15712e10faf2720d0
   )
 }
