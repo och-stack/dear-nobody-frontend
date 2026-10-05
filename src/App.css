@@ -1,0 +1,208 @@
+:root {
+    --page: #efe5d2;
+
+    --forest: #294638;
+    --forest-light: #3f6750;
+
+    --post: #e8e1ec;
+    --post-light: #f3eef5;
+
+    --terracotta: #b8755d;
+
+    --cream: #fff8e9;
+    --cocoa: #5b4638;
+    --text: #292823;
+    --muted: #777168;
+    --border: #d4c8d7;
+}
+
+body {
+    margin: 0;
+    background: var(--page);
+    color: var(--text);
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    max-width: 900px;
+}
+
+/* Navbar */
+
+.navbar {
+    background: var(--forest) !important;
+}
+
+.navbar-brand,
+.nav-link {
+    color: var(--cream) !important;
+}
+
+.nav-link:hover,
+a:hover {
+    color: #e8c98c !important;
+}
+
+a {
+    color: var(--forest);
+    text-decoration: none;
+}
+
+/* Headings */
+
+h1,
+h2,
+h3 {
+    color: var(--cocoa);
+}
+
+.feed-title {
+    color: var(--cocoa);
+}
+
+/* Create Post */
+
+.create-post {
+    background: var(--forest-light);
+    color: var(--cream);
+    border: 1px solid #52765f;
+    border-radius: 14px;
+}
+
+.create-post .card-title {
+    color: var(--cream);
+}
+
+.create-post .form-label,
+.create-post .form-check-label {
+    color: var(--cream);
+}
+
+/* Post Cards */
+
+.post-card {
+    background: var(--post);
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    margin-bottom: 18px;
+}
+
+.post-card .card-title {
+    color: var(--cocoa) !important;
+}
+
+.post-content {
+    color: var(--text);
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+.post-meta {
+    color: var(--muted);
+    font-size: 0.85rem;
+}
+
+/* Protected Post */
+
+.protected-post {
+    background: var(--post-light);
+    border-left: 6px solid var(--forest);
+}
+
+/* Friends */
+
+.friends-card {
+    background: var(--terracotta);
+    color: var(--cream);
+    border-radius: 16px;
+    padding: 4px;
+}
+
+.friends-card h2,
+.friends-card h3 {
+    color: var(--cream);
+}
+
+/* Friends List */
+
+.friends-list {
+    background: transparent;
+}
+
+.friend-item {
+    background: transparent;
+    color: var(--cream);
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255, 248, 233, 0.25);
+}
+
+.friend-item:last-child {
+    border-bottom: none;
+}
+
+.friend-name {
+    color: var(--cream);
+    font-weight: bold;
+}
+
+/* Buttons */
+
+.btn-primary,
+.btn-primary:active,
+.btn-primary:focus {
+    background-color: var(--cocoa) !important;
+    border-color: var(--cocoa) !important;
+    color: var(--cream) !important;
+}
+
+.btn-primary:hover {
+    background-color: #46352b !important;
+    border-color: #46352b !important;
+    color: var(--cream) !important;
+}
+
+.btn-outline-primary {
+    color: var(--cocoa) !important;
+    border-color: var(--cocoa) !important;
+}
+
+.btn-outline-primary:hover,
+.btn-outline-primary:active,
+.btn-outline-primary:focus {
+    background-color: var(--cocoa) !important;
+    border-color: var(--cocoa) !important;
+    color: var(--cream) !important;
+}
+
+/* Forms */
+
+.form-control {
+    background: var(--cream);
+    color: var(--text);
+    border-color: #d6c7ad;
+}
+
+.form-control:focus {
+    background: var(--cream);
+    color: var(--text);
+    border-color: var(--forest);
+    box-shadow: 0 0 0 0.2rem rgba(41, 70, 56, 0.2);
+}
+
+.form-control::placeholder {
+    color: #999184;
+}
+
+.form-check-input:checked {
+    background-color: var(--forest);
+    border-color: var(--forest);
+}
+
+/* Empty State */
+
+.empty-state {
+    color: var(--forest);
+    text-align: center;
+    padding: 40px 20px;
+}
