@@ -22,6 +22,7 @@ export default function Signup() {
   }
 
   return (
+<<<<<<< HEAD
     <div className="row justify-content-center">
       <div className="col-md-6 col-lg-5">
         <div className="card shadow-sm">
@@ -85,5 +86,16 @@ export default function Signup() {
         </div>
       </div>
     </div>
+=======
+    <form onSubmit={handleSubmit}>
+      <h1>Sign up</h1>
+      <p><input placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} /></p>
+      <p><input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required /></p>
+      <p><input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required /></p>
+      <button type="submit">Sign up</button>
+      {error && <p>{error}</p>}
+      <p>Have an account? <Link to="/login">Log in</Link></p>
+    </form>
+>>>>>>> 2043396a7da4e4fa441774c15712e10faf2720d0
   )
 }

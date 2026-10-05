@@ -10,7 +10,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
+<<<<<<< HEAD
     "bootstrap": "^5.3.8",
+=======
+>>>>>>> 2043396a7da4e4fa441774c15712e10faf2720d0
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
     "react-router-dom": "^7.9.0"
