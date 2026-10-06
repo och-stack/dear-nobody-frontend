@@ -14,6 +14,7 @@ export const ENDPOINTS = {
   createPost: 'https://dear-nobody-api-production.up.railway.app/posts',
   users: 'https://dear-nobody-api-production.up.railway.app/users',
   friends: 'https://dear-nobody-api-production.up.railway.app/friends',
+  acceptFriend: 'https://dear-nobody-api-production.up.railway.app/friends',
 }
 
 function RequireAuth({ children }) {

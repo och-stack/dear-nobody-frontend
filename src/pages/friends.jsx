@@ -5,14 +5,25 @@ import { ENDPOINTS } from '../App'
 export default function Friends() {
   const { apiFetch } = useAuth()
   const [users, setUsers] = useState([])
-  const [followed, setFollowed] = useState({})
   const [error, setError] = useState('')
 
   useEffect(() => {
-    apiFetch(ENDPOINTS.users)
-      .then((data) => setUsers(Array.isArray(data) ? data : data.users || []))
-      .catch((err) => setError(err.message))
+    loadUsers()
   }, [])
+
+  async function loadUsers() {
+    try {
+      const data = await apiFetch(ENDPOINTS.users)
+
+      setUsers(
+        Array.isArray(data)
+          ? data
+          : data.users || []
+      )
+    } catch (err) {
+      setError(err.message)
+    }
+  }
 
   async function follow(userId) {
     setError('')
@@ -20,20 +31,87 @@ export default function Friends() {
     try {
       await apiFetch(ENDPOINTS.friends, {
         method: 'POST',
-        body: JSON.stringify({ friend_id: userId }),
+        body: JSON.stringify({
+          friend_id: userId,
+        }),
       })
 
-      setFollowed({ ...followed, [userId]: true })
+      await loadUsers()
     } catch (err) {
       setError(err.message)
     }
   }
 
+  async function acceptFriend(friendshipId) {
+    setError('')
+
+    try {
+      await apiFetch(
+        `${ENDPOINTS.acceptFriend}/${friendshipId}`,
+        {
+          method: 'PUT',
+        }
+      )
+
+      await loadUsers()
+    } catch (err) {
+      setError(err.message)
+    }
+  }
+
+  function renderFriendButton(user) {
+    if (user.friendship_status === 'accepted') {
+      return (
+        <button
+          className="btn btn-sm btn-success"
+          disabled
+        >
+          Following
+        </button>
+      )
+    }
+
+    if (
+      user.friendship_status === 'pending' &&
+      user.friendship_direction === 'outgoing'
+    ) {
+      return (
+        <button
+          className="btn btn-sm btn-secondary"
+          disabled
+        >
+          Pending
+        </button>
+      )
+    }
+
+    if (
+      user.friendship_status === 'pending' &&
+      user.friendship_direction === 'incoming'
+    ) {
+      return (
+        <button
+          className="btn btn-sm btn-success"
+          onClick={() => acceptFriend(user.friendship_id)}
+        >
+          Accept
+        </button>
+      )
+    }
+
+    return (
+      <button
+        className="btn btn-sm btn-primary"
+        onClick={() => follow(user.id)}
+      >
+        Follow
+      </button>
+    )
+  }
+
   return (
     <div className="row justify-content-center">
       <div className="col-lg-8">
-
-        {/* Friends Heading */}
 
         <div className="d-flex align-items-center gap-2 mb-4">
           <img
@@ -71,13 +149,7 @@ export default function Friends() {
                     {user.username || user.email}
                   </span>
 
-                  <button
-                    className="btn btn-sm btn-primary"
-                    onClick={() => follow(user.id)}
-                    disabled={followed[user.id]}
-                  >
-                    {followed[user.id] ? 'Following' : 'Follow'}
-                  </button>
+                  {renderFriendButton(user)}
                 </li>
               ))}
             </ul>
@@ -88,3 +160,4 @@ export default function Friends() {
     </div>
   )
 }
+
