@@ -60,6 +60,24 @@ h3 {
     color: var(--cocoa);
 }
 
+.navbar-brand img {
+    animation: floatLetter 2s ease-in-out infinite;
+}
+
+@keyframes floatLetter {
+    0% {
+        transform: translateY(3px);
+    }
+
+    50% {
+        transform: translateY(-3px);
+    }
+
+    100% {
+        transform: translateY(3px);
+    }
+}
+
 /* Create Post */
 
 .create-post {
