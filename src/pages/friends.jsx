@@ -25,6 +25,7 @@ export default function Friends() {
     }
   }
 
+  // send a friend request to another user (what-if)
   async function follow(userId) {
     setError('')
 
@@ -36,16 +37,21 @@ export default function Friends() {
         }),
       })
 
+      // reload the users so the button can change
+      // from "Follow" to "Pending"
       await loadUsers()
     } catch (err) {
       setError(err.message)
     }
   }
 
+  // accept the friend request
   async function acceptFriend(friendshipId) {
     setError('')
 
     try {
+      // the frienships ID identifies the specific request
+      // PUT changes its status from "pending" to "accepted"
       await apiFetch(
         `${ENDPOINTS.acceptFriend}/${friendshipId}`,
         {
@@ -59,6 +65,7 @@ export default function Friends() {
     }
   }
 
+  // which button to display
   function renderFriendButton(user) {
     if (user.friendship_status === 'accepted') {
       return (
